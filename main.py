@@ -13,16 +13,16 @@ app = FastAPI()
 
 # Default values V 
 
-#@app.get('/blog/all')
-#def get_all_blogs(page = 1, page_size = 10):
-#    return ('message': f'All {page_size} blogs on page {page}')
+@app.get('/blog/all')
+def get_all_blogs(page = 1, page_size = 10):
+    return {'message': f'All {page_size} blogs on page {page}'}
 
 
 # Optional Parameters
 
-#@app.get('/blog/all')
-#def get_all_blogs(page = 1, page_size: Optional[str] = None):
-#    return ('message': f'All {page_size} blogs on page {page}')
+@app.get('/blog/all')
+def get_all_blogs(page = 1, page_size: Optional[str] = None):
+    return {'message': f'All {page_size} blogs on page {page}'}
 
 
 ## Complex 
