@@ -9,8 +9,6 @@ router = APIRouter(
     tags=['blog']
 )
 
-
-
 # Default values V 
 
 @router.get(
