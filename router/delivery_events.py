@@ -8,26 +8,20 @@ router = APIRouter(
 )
 
 
-@router.post('/new')
+@router.post('/{EmployeeId}')
 def create_delivery():
-    pass 
+    return "You create a new event"
 
 
-@router.get('/new')
+@router.get('/{EmployeeId}')
 def get_delivery():
-    pass 
+    return "Take all events"
 
-@router.delete('/new')
+@router.delete('/{EmployeeId}')
 def delete_delivery():
-    pass
+    return "You delete a event"
 
 
 
 ### Global Variables 
 
-
-operations_info = {
-'Employee#1': {'Id': '3332', 'JobType':'Delivery', 'Rating':'4.51', 'LifeTimeTrips':'1,500', 'Status':'Active', 'CanceledTrips':'15'},
-'Employee#2': {'Id': '3333', 'JobType':'Trip', 'Rating':'4.82', 'LifeTimeTrips':'5,000', 'Status':'Active', 'CanceledTrips':'40'},
-'Employee#3': {'Id': '3334', 'JobType':'Delivery', 'Rating':'4.64', 'LifeTimeTrips':'800', 'Status':'Inactive', 'CanceledTrips':'8'}
-}

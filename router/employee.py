@@ -2,7 +2,6 @@ from typing import Optional
 from fastapi import APIRouter, status, Response
 from enum import Enum
 from pydantic import BaseModel
-from schemas import EmployeeModel
 
 
 router = APIRouter(
@@ -10,14 +9,8 @@ router = APIRouter(
     tags=['employee']
 )
 
-@router.post('/all/{id}')
-def create_employee(employee: EmployeeModel, id: int):
-    return {
-        'id': id,
-        'data': employee
-        }
 
-@router.get('/all')
+@router.get('/{id}')
 def get_employee_information():
     employee_information = {
     'Employee#1': {'id': 'd441', 'firstname': 'José Luis', 'country': 'México', 'city': 'Tampico', 'phonenumber': '8335387753'},
@@ -27,8 +20,7 @@ def get_employee_information():
     return employee_information
 
 
-
-@router.post('/{name}/company/{company_name}', status_code=status.HTTP_200_OK)
+@router.get('/{name}/company/{company_name}', status_code=status.HTTP_200_OK)
 def create_employee(name: str, company: str, response: Response):
     companies = ['Uber', 'Didi', 'Pemex']
     """
@@ -44,6 +36,12 @@ def create_employee(name: str, company: str, response: Response):
     return {'employee': f'employee_name: {name}, company: {company}'}
 
 
-@router.get('/new')
-def get_employee():
-    pass 
+
+@router.post('/{id}')
+def create_employee():
+    pass
+
+@router.delete('/{id}')
+def delete_employee():
+    pass
+

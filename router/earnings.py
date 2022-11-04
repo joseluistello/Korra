@@ -10,16 +10,17 @@ router = APIRouter(
 )
 
 
-@router.post('/new')
+@router.post('/{EmployeeId}')
 def create_earnings():
-    pass 
+    return "You create new earnings"
 
 
-@router.get('/new')
+@router.get('/{EmployeeId}')
 def get_earnings():
-    pass 
+    return "Take all earnings"
+    
 
-@router.delete('/new')
+@router.delete('/{EmployeeId}')
 def delete_earnings():
-    pass
+    return "You delete earnings"
 
