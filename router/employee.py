@@ -1,8 +1,8 @@
-from fastapi import Query
 from typing import Optional
 from fastapi import APIRouter, status, Response
 from enum import Enum
 from pydantic import BaseModel
+from schemas import EmployeeModel
 
 
 router = APIRouter(
@@ -10,23 +10,12 @@ router = APIRouter(
     tags=['employee']
 )
 
-class EmployeeModel(BaseModel):
-    Id: str
-    Company: str
-    FirstName: str
-    Country: str
-    City: str
-    Email: str
-    PhoneNumber: int
-    Address: str
-
-
 @router.post('/all/{id}')
-def create_employee(employee: EmployeeModel, id: int, version: int = Query(None)):
+def create_employee(employee: EmployeeModel, id: int):
     return {
         'id': id,
-        'data': employee,
-        'version': version}
+        'data': employee
+        }
 
 @router.get('/all')
 def get_employee_information():
