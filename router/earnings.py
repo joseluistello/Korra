@@ -19,7 +19,7 @@ def create_earnings():
 def get_earnings():
     pass 
 
-@router.get('/new')
+@router.delete('/new')
 def delete_earnings():
     pass
 

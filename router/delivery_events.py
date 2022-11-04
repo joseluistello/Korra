@@ -17,7 +17,17 @@ def create_delivery():
 def get_delivery():
     pass 
 
-@router.get('/new')
+@router.delete('/new')
 def delete_delivery():
     pass
 
+
+
+### Global Variables 
+
+
+operations_info = {
+'Employee#1': {'Id': '3332', 'JobType':'Delivery', 'Rating':'4.51', 'LifeTimeTrips':'1,500', 'Status':'Active', 'CanceledTrips':'15'},
+'Employee#2': {'Id': '3333', 'JobType':'Trip', 'Rating':'4.82', 'LifeTimeTrips':'5,000', 'Status':'Active', 'CanceledTrips':'40'},
+'Employee#3': {'Id': '3334', 'JobType':'Delivery', 'Rating':'4.64', 'LifeTimeTrips':'800', 'Status':'Inactive', 'CanceledTrips':'8'}
+}

@@ -1,7 +1,8 @@
-from fastapi import APIRouter
+from fastapi import Query
 from typing import Optional
 from fastapi import APIRouter, status, Response
 from enum import Enum
+from pydantic import BaseModel
 
 
 router = APIRouter(
@@ -9,16 +10,38 @@ router = APIRouter(
     tags=['employee']
 )
 
+class EmployeeModel(BaseModel):
+    Id: str
+    Company: str
+    FirstName: str
+    Country: str
+    City: str
+    Email: str
+    PhoneNumber: int
+    Address: str
+
+
+@router.post('/all/{id}')
+def create_employee(employee: EmployeeModel, id: int, version: int = Query(None)):
+    return {
+        'id': id,
+        'data': employee,
+        'version': version}
+
 @router.get('/all')
 def get_employee_information():
-    employee_information = {'Employee#1': {'id': 'd441', 'firstname': 'José Luis', 'country': 'México', 'city': 'Tampico', 'phonenumber': '8335387753'}}
+    employee_information = {
+    'Employee#1': {'id': 'd441', 'firstname': 'José Luis', 'country': 'México', 'city': 'Tampico', 'phonenumber': '8335387753'},
+    'Employee#2': {'id': 'd443', 'firstname': 'Pedro', 'country': 'México', 'city': 'Jalisco', 'phonenumber': '8335697753'},
+    'Employee#3': {'id': 'd461', 'firstname': 'Juan', 'country': 'México', 'city': 'Monterrey', 'phonenumber': '8335382253'}
+    }
     return employee_information
 
 
 
 @router.post('/{name}/company/{company_name}', status_code=status.HTTP_200_OK)
 def create_employee(name: str, company: str, response: Response):
-    companies = ['uber', 'didi', 'pemex']
+    companies = ['Uber', 'Didi', 'Pemex']
     """
     Simulates retrieving a name and company of an employee
     - **name** mandatory path parameter
